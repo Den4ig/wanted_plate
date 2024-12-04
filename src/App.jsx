@@ -1,13 +1,16 @@
-import "./css/App.css";
-import "./js/folder_flip";
+import { useState } from "react";
 import Folder from "./components/Folder";
 import FolderButtons from "./components/FolderButtons";
 
 export default function App() {
-  return (
-    <div>
-      <Folder></Folder>
-      <FolderButtons></FolderButtons>
-      </div>
-  );
+
+	const [flipped, setFlipped] = useState("");    // Tracking "flipped" class for pages
+	const [folderFlipped, setFolderFlipped] = useState("folder");    // Tracking "folder-flip" class for folder
+
+	return (
+		<div>
+			<Folder flipped={flipped} folderFlip={folderFlipped}/>
+			<FolderButtons setFlipped={setFlipped} setFolderFlipped={setFolderFlipped}/>
+		</div>
+	);
 }
