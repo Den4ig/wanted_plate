@@ -1,8 +1,10 @@
-export default function FolderPage({flipped}) {
+export default function FolderPage({flipped, children}) {
     return(
         <div className="folder-page">
 
-            <div className={flipped}></div>
+            <div className={flipped}>
+                {children}
+            </div>
 
         </div>
     );
