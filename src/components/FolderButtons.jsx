@@ -8,11 +8,15 @@ const FolderButtons = ({setFlipped, setFolderFlipped, setButtonStyle}) => {
 		setFlipped((prev) => (prev === "flipped" ? "" : "flipped"));   // Add "flipped" class to pages
 		setFolderFlipped((prev) => (prev === "folder" ? "folder folder-flip" : "folder"));  // Add "folder-flip" class to folder div
 		setIsStyled((prev) => !prev);    // Change page button style
-		setButtonStyle(isStyled          // Page buttons styles for moving them
-			 ? [{}, {}] 
+		setButtonStyle(isStyled          // Page buttons styles for moving them and opacity change
+			 ? [{opacity: "0"}, {opacity: "0"}]   
 			 : [
-				{transform: "translateX(-316px)"}, 
-				{transform: "translateX(328px)"}
+				{	transform: "translateX(-324px) rotate(90deg)",
+				 	opacity: "100"
+				}, 
+				{	transform: "translateX(336px) rotate(270deg)",
+					opacity: "100"
+				}
 				]
 			);
 	};
