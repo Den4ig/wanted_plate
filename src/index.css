@@ -63,9 +63,6 @@
 }
 
 .folder-page > div {
-	position: absolute;
-	top: 0;
-	left: 0;
 	height: 100%;
 	width: 100%;
 	transform-origin: left;
@@ -73,20 +70,12 @@
 	transition: 0.5s;
 }
 
-.folder > div:nth-child(2) div {
+.folder > div:nth-child(2) > div {
+	position: relative;
 	display: flex;
 	align-items: center;
-	/* background-color: rgb(65, 196, 167); */
-}
-
-/* Folder flip effect */
-
-.folder-flip {
-	transform: translateX(50%);
-  }
-  
-.flipped {
-	transform: rotateY(180deg);
+	background-color: rgb(65, 196, 167);
+	z-index: 3;
 }
 
 /* Folder page sequence */
@@ -99,13 +88,25 @@
 	z-index: 1;
 }
 
+/* Folder flip effect */
+
+.folder-flip {
+	transform: translateX(50%);
+  }
+  
+.folder-page > .flipped {
+	transform: rotateY(180deg);
+}
+
 /* Pages inside folder */
 
 .book {
-	position: relative;
+	position: absolute;
 	width: 95%;
 	height: 93%;
 	transition: 0.5s;
+	z-index: 4;
+	background-color: red;
 }
 
 .page {
@@ -115,6 +116,7 @@
 	top: 0;
 	left: 0;
 	background-color: rgb(181, 223, 191);
+	z-index: 5;
 }
 
 .page-front,
@@ -124,39 +126,38 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: rgb(255, 255, 255);
+	background-image: linear-gradient(to right, #c2beab, #e0dbc4, #c2beab);
 	transform-origin: left;
 	transition: 0.5s;
-	}
+}
 
 .front-content,
 .back-content {
 	width: 100%;
 	height: 100%;
-	}
+}
+
+.back-content {
+	transform: rotateY(180deg);
+}
+
+/* Page flip effect */
+
+.flipped .page-front,
+.flipped .page-back {
+	transform: rotateY(180deg);
+}
 
 /* Folder page sequence */
 
-.page-front {
+/* .page-front {
 	z-index: 4;
 	backface-visibility: hidden;
-  }
-  
-  .page-back {
+}
+
+.page-back {
 	z-index: 3;
-  }
-  
-  .back-content {
-	transform: rotateY(180deg);
-  }
-  
-  .page-1 {
-	z-index: 4;
-  }
-  
-  .page-2 {
-	z-index: 3;
-  }
+} */
 
 /* Folder buttons to open and close it */
 

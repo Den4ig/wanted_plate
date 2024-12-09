@@ -1,6 +1,6 @@
-export default function Papers(){
+export default function Papers({ isFlipped }){
     return(
-        <div className="page">
+        <div className={`page ${isFlipped ? "flipped" : ""}`}>
             <div className="page-front">
                 <div className="front-content"></div>
             </div>

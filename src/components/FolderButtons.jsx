@@ -1,7 +1,7 @@
 import { useState } from "react";
-const FolderButtons = ({setFlipped, setFolderFlipped, setButtonStyle}) => {
-	const [isOpened, setIsOpened] = useState(true);
-	const [isStyled, setIsStyled] = useState(false);
+const FolderButtons = ({ setFlipped, setFolderFlipped, setButtonStyle, setFolderZIndex, setFolderTransition }) => {
+	const [isOpened, setIsOpened] = useState(true);  // Change button name
+	const [isStyled, setIsStyled] = useState(false);  // Page buttons styles for moving them and opacity change
 
 	const handleClick = () => {
 		setIsOpened(!isOpened);   // Change button name
@@ -19,6 +19,15 @@ const FolderButtons = ({setFlipped, setFolderFlipped, setButtonStyle}) => {
 				}
 				]
 			);
+		setFolderZIndex((prev) => (prev === "2" ? "0" : "2"));   //Set folder's flipped page z-index when flipped
+		setFolderTransition((prev) => {			//Set folder's flipped page transition time when flipped or unflipped
+			if(isOpened) {
+				return prev = "0.7s";
+			} else {
+				return prev = "0s";
+			}
+		});
+
 	};
 	
 
