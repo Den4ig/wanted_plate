@@ -54,7 +54,7 @@
 	border-left: 6px solid #7e7448;
 }
 
-.folder-page {
+.folder_page {
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -62,7 +62,7 @@
 	left: 0;
 }
 
-.folder-page > div {
+.folder_page > div {
 	height: 100%;
 	width: 100%;
 	transform-origin: left;
@@ -90,11 +90,11 @@
 
 /* Folder flip effect */
 
-.folder-flip {
+.folder_flip {
 	transform: translateX(50%);
   }
   
-.folder-page > .flipped {
+.folder_page > .flipped {
 	transform: rotateY(180deg);
 }
 
@@ -105,7 +105,6 @@
 	width: 95%;
 	height: 93%;
 	transition: 0.5s;
-	z-index: 4;
 	background-color: red;
 }
 
@@ -116,11 +115,10 @@
 	top: 0;
 	left: 0;
 	background-color: rgb(181, 223, 191);
-	z-index: 5;
 }
 
-.page-front,
-.page-back {
+.page_front,
+.page_back {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -131,31 +129,31 @@
 	transition: 0.5s;
 }
 
-.front-content,
-.back-content {
+.front_content,
+.back_content {
 	width: 100%;
 	height: 100%;
 }
 
-.back-content {
+.back_content {
 	transform: rotateY(180deg);
 }
 
 /* Page flip effect */
 
-.flipped .page-front,
-.flipped .page-back {
+.flipped .page_front,
+.flipped .page_back {
 	transform: rotateY(180deg);
 }
 
 /* Folder page sequence */
 
-/* .page-front {
+/* .page_front {
 	z-index: 4;
 	backface-visibility: hidden;
 }
 
-.page-back {
+.page_back {
 	z-index: 3;
 } */
 
