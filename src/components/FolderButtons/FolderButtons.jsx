@@ -1,9 +1,10 @@
-import { useState } from "react";
+import styles from "./FolderButtons.module.css";
+
 const FolderButtons = ({ isOpened=null, handleClick=null }) => {
 
 	return (
-		<div className="folder_buttons">
-			<button className="folder_open" onClick={handleClick}>
+		<div className={styles.folder_buttons}>
+			<button onClick={handleClick}>
 				{isOpened ? "Открыть" : "Закрыть"}
 			</button>
 		</div>

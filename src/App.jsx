@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Folder from "./components/Folder";
-import FolderButtons from "./components/FolderButtons";
+import FolderButtons from "./components/FolderButtons/FolderButtons";
 
 export default function App() {
 
