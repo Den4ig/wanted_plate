@@ -1,11 +1,13 @@
 import { useState } from "react";
-import Folder from "./components/Folder";
+import Folder from "./components/Folder/Folder";
 import FolderButtons from "./components/FolderButtons/FolderButtons";
+import folderStyles from "./components/Folder/Folder.module.css";
+import folderPageStyles from "./components/FolderPage/FolderPage.module.css";
 
 export default function App() {
 
 	const [flipped, setFlipped] = useState("");    // Tracking "flipped" class for pages
-	const [folderFlipped, setFolderFlipped] = useState("folder");    // Tracking "folder-flip" class for folder
+	const [folderFlipped, setFolderFlipped] = useState(folderStyles.folder);    // Tracking "folder-flip" class for folder
 	const [buttonStyles, setButtonStyles] = useState({   // Moving page buttons when opening folder
 		left: {},
 		right: {}
@@ -18,8 +20,12 @@ export default function App() {
 
 	const handleClick = () => {
 		setIsOpened(!isOpened);   // Change button name
-		setFlipped((prev) => (prev === "flipped" ? "" : "flipped"));   // Add "flipped" class to pages
-		setFolderFlipped((prev) => (prev === "folder" ? "folder folder_flip" : "folder"));  // Add "folder-flip" class to folder div
+		setFlipped((prev) => (prev === `${folderPageStyles.folder_flipped}` ? "" : `${folderPageStyles.folder_flipped}`));   // Add "flipped" class to pages
+		setFolderFlipped((prev) => (
+			prev === folderStyles.folder 
+			? `${folderStyles.folder} ${folderStyles.folder_move}` 
+			: folderStyles.folder // Add "folder-flip" class to folder div
+		));  
 		setIsStyled((prev) => !prev);    // Change page button style
 		setButtonStyles(isStyled          // Page buttons styles for moving them and opacity change
 			 ? {left: {opacity: "0"}, right: {opacity: "0"}}   
@@ -43,7 +49,7 @@ export default function App() {
 		<div>
 			<Folder 
 				flipped={flipped} 
-				folderFlip={folderFlipped} 
+				folderMove={folderFlipped} 
 				buttonStyle={buttonStyles}
 				numOfPaperPages={5}
 				zIndex={folderZIndex}

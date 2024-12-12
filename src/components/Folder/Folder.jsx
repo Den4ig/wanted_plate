@@ -1,9 +1,10 @@
 import { useState } from "react";
-import FolderPage from "./FolderPage";
-import Papers from "./Papers";
-import PageButtons from "./PageButtons";
+import FolderPage from "../FolderPage/FolderPage";
+import Papers from "../Papers/Papers";
+import PageButtons from "../PageButtons/PageButtons";
+import styles from "./Folder.module.css";
 
-export default function Folder({ flipped=null, folderFlip=null, buttonStyle=null, numOfPaperPages=null, zIndex=null, folderTransition=null }) {
+export default function Folder({ flipped=null, folderMove=null, buttonStyle=null, numOfPaperPages=null, zIndex=null, folderTransition=null }) {
 
 	const [currentPage, setCurrentPage] = useState(0);
 
@@ -16,11 +17,11 @@ export default function Folder({ flipped=null, folderFlip=null, buttonStyle=null
 	};
 
 	return (
-		<div className="folder_bg">
+		<div className={styles.folder_bg}>
 
 			 <PageButtons buttonStyle={buttonStyle.left} movePage={handlePrev}/>    {/*Button for page flipping */}
 
-			<div className={folderFlip}>
+			<div className={folderMove}>
 				<FolderPage flipped={flipped} zIndex={zIndex} folderTransition={folderTransition}/>             {/*Folder pages */}
 				<FolderPage>
 					<Papers currentPage={currentPage} numOfPaperPages={numOfPaperPages}/>

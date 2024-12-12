@@ -1,0 +1,41 @@
+/* Folder block */
+
+.folder_bg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 800px;
+}
+
+.folder {
+	height: 100%;
+	width: 650px;
+	position: relative;
+	transition: 0.5s;
+	border-left: 6px solid #7e7448;
+}
+
+.folder > div:nth-child(2) > div {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background-color: rgb(65, 196, 167);
+	z-index: 3;
+}
+
+/* Folder page sequence */
+
+.folder > div:nth-child(1) {
+	z-index: 2;
+}
+
+.folder > div:nth-child(2) {
+	z-index: 1;
+}
+
+/* Folder flip effect */
+
+.folder_move {
+	transform: translateX(50%);
+  }

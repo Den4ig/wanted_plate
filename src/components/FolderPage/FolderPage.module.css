@@ -1,0 +1,23 @@
+/* Folder block */
+
+.folder_page {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.folder_page > div {
+	height: 100%;
+	width: 100%;
+	transform-origin: left;
+	background-color: rgb(231, 125, 125);
+	transition: 0.5s;
+}
+
+/* Folder page is flipped */
+
+.folder_flipped {
+	transform: rotateY(180deg);
+}

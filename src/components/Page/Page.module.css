@@ -1,8 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
 /* Pages inside folder */
 
 .page {
@@ -42,14 +37,3 @@
 .flipped .page_back {
 	transform: rotateY(180deg);
 }
-
-/* Folder page sequence */
-
-/* .page_front {
-	z-index: 4;
-	backface-visibility: hidden;
-}
-
-.page_back {
-	z-index: 3;
-} */
