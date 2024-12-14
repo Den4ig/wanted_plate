@@ -6,7 +6,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: rgb(181, 223, 191);
+	transition: 0.5s;
+	/* background-color: rgb(181, 223, 191); */
 }
 
 .page_front,
@@ -16,7 +17,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-image: linear-gradient(to right, #c2beab, #e0dbc4, #c2beab);
+	background-image: url(../../img/criminal_1.jpg);
 	transform-origin: left;
 	transition: 0.5s;
 }
@@ -36,4 +37,15 @@
 .flipped .page_front,
 .flipped .page_back {
 	transform: rotateY(180deg);
+}
+
+/* Folder page sequence */
+
+.page_front {
+	z-index: 6;
+	backface-visibility: hidden;
+}
+
+.page_back {
+	z-index: 5;
 }
