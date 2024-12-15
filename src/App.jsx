@@ -3,6 +3,7 @@ import Folder from "./components/Folder/Folder";
 import FolderButtons from "./components/FolderButtons/FolderButtons";
 import folderStyles from "./components/Folder/Folder.module.css";
 import folderPageStyles from "./components/FolderPage/FolderPage.module.css";
+import PageStyles from "./components/Page/Page.module.css";
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
 
 	const [isOpened, setIsOpened] = useState(true);  // Change button name
 	const [isStyled, setIsStyled] = useState(false);  // Page buttons styles for moving them and opacity change
+	const [isFolderOpened, setIsFolderOpened] = useState(true);  // Closing all pages if we close folder
 
 	const handleClick = () => {
 		setIsOpened(!isOpened);   // Change button name
@@ -42,7 +44,7 @@ export default function App() {
 				return prev = "0s";
 			}
 		});
-
+		setIsFolderOpened(!isFolderOpened);		// Closing all pages if we close folder
 	};
 	
 	return (
@@ -54,6 +56,7 @@ export default function App() {
 				numOfPaperPages={5}
 				zIndex={folderZIndex}
 				folderTransition={folderTransition}
+				closePages={isFolderOpened}
 			/>
 			<FolderButtons
 				handleClick={handleClick}

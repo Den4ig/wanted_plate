@@ -17,7 +17,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-image: url(../../img/criminal_1.jpg);
+	background-image: linear-gradient(to right, #c2beab, #e0dbc4, #c2beab);
 	transform-origin: left;
 	transition: 0.5s;
 }

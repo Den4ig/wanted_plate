@@ -1,7 +1,7 @@
 import Page from '../Page/Page'
 import styles from "./Papers.module.css";
 
-export default function Papers({ currentPage=null, numOfPaperPages=null }){
+export default function Papers({ currentPage=null, numOfPaperPages=null, closePages=null }){
     return(
         <div className={styles.book}>
             {Array.from(
@@ -16,8 +16,8 @@ export default function Papers({ currentPage=null, numOfPaperPages=null }){
                                 : index === currentPage
                                 ? numOfPaperPages + 1
                                 : numOfPaperPages - index
-
                         }}
+                        closePages={closePages}
                     /> 
                 )   
             )}

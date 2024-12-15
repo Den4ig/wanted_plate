@@ -4,7 +4,8 @@ import Papers from "../Papers/Papers";
 import PageButtons from "../PageButtons/PageButtons";
 import styles from "./Folder.module.css";
 
-export default function Folder({ flipped=null, folderMove=null, buttonStyle=null, numOfPaperPages=null, zIndex=null, folderTransition=null }) {
+export default function Folder({ flipped=null, folderMove=null, buttonStyle=null, numOfPaperPages=null,
+	 zIndex=null, folderTransition=null, closePages=null }) {
 
 	const [currentPage, setCurrentPage] = useState(0);
 
@@ -24,7 +25,7 @@ export default function Folder({ flipped=null, folderMove=null, buttonStyle=null
 			<div className={folderMove}>
 				<FolderPage flipped={flipped} zIndex={zIndex} folderTransition={folderTransition}/>             {/*Folder pages */}
 				<FolderPage>
-					<Papers currentPage={currentPage} numOfPaperPages={numOfPaperPages}/>
+					<Papers currentPage={currentPage} numOfPaperPages={numOfPaperPages} closePages={closePages}/>
 				</FolderPage>
 			</div>
 
