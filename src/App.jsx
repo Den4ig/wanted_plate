@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Folder from "./components/Folder/Folder";
 import FolderButtons from "./components/FolderButtons/FolderButtons";
 import folderStyles from "./components/Folder/Folder.module.css";
 import folderPageStyles from "./components/FolderPage/FolderPage.module.css";
-import PageStyles from "./components/Page/Page.module.css";
+
+export const FolderContext = createContext();
 
 export default function App() {
+
+	const numOfPaperPages = 5;  //Number of pages inside of folder
 
 	const [flipped, setFlipped] = useState("");    // Tracking "flipped" class for pages
 	const [folderFlipped, setFolderFlipped] = useState(folderStyles.folder);    // Tracking "folder-flip" class for folder
@@ -19,6 +22,8 @@ export default function App() {
 	const [isOpened, setIsOpened] = useState(true);  // Change button name
 	const [isStyled, setIsStyled] = useState(false);  // Page buttons styles for moving them and opacity change
 	const [isFolderOpened, setIsFolderOpened] = useState(true);  // Closing all pages if we close folder
+
+	// Handle click
 
 	const handleClick = () => {
 		setIsOpened(!isOpened);   // Change button name
@@ -49,18 +54,14 @@ export default function App() {
 	
 	return (
 		<div>
-			<Folder 
-				flipped={flipped} 
-				folderMove={folderFlipped} 
-				buttonStyle={buttonStyles}
-				numOfPaperPages={5}
-				zIndex={folderZIndex}
-				folderTransition={folderTransition}
-				closePages={isFolderOpened}
-			/>
+			<FolderContext.Provider value={{ buttonStyles, isFolderOpened, numOfPaperPages, flipped, folderZIndex, folderTransition }}>
+				<Folder
+					folderMove={folderFlipped}
+				/>
+			</FolderContext.Provider>
 			<FolderButtons
-				handleClick={handleClick}
 				isOpened={isOpened}
+				handleClick={handleClick}
 			/>
 		</div>
 	);

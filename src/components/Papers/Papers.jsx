@@ -1,7 +1,13 @@
+import { useContext } from "react";
+import { FolderContext } from "../../App";
+//Components
 import Page from '../Page/Page'
 import styles from "./Papers.module.css";
 
-export default function Papers({ currentPage=null, numOfPaperPages=null, closePages=null }){
+export default function Papers({ currentPage=null }){
+
+    const { numOfPaperPages } = useContext(FolderContext);
+
     return(
         <div className={styles.book}>
             {Array.from(
@@ -17,7 +23,6 @@ export default function Papers({ currentPage=null, numOfPaperPages=null, closePa
                                 ? numOfPaperPages + 1
                                 : numOfPaperPages - index
                         }}
-                        closePages={closePages}
                     /> 
                 )   
             )}

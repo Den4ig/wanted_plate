@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { FolderContext } from "../../App";
+//Components
 import FolderPage from "../FolderPage/FolderPage";
 import Papers from "../Papers/Papers";
 import PageButtons from "../PageButtons/PageButtons";
+// Styles
 import styles from "./Folder.module.css";
 
-export default function Folder({ flipped=null, folderMove=null, buttonStyle=null, numOfPaperPages=null,
-	 zIndex=null, folderTransition=null, closePages=null }) {
+export default function Folder({ folderMove=null }) {
+
+	const { buttonStyles, numOfPaperPages, flipped, folderZIndex, folderTransition } = useContext(FolderContext);
 
 	const [currentPage, setCurrentPage] = useState(0);
 
@@ -20,16 +24,16 @@ export default function Folder({ flipped=null, folderMove=null, buttonStyle=null
 	return (
 		<div className={styles.folder_bg}>
 
-			 <PageButtons buttonStyle={buttonStyle.left} movePage={handlePrev}/>    {/*Button for page flipping */}
+			 <PageButtons buttonStyle={buttonStyles.left} movePage={handlePrev}/>    {/*Button for page flipping */}
 
 			<div className={folderMove}>
-				<FolderPage flipped={flipped} zIndex={zIndex} folderTransition={folderTransition}/>             {/*Folder pages */}
+				<FolderPage flipped={flipped} zIndex={folderZIndex} folderTransition={folderTransition}/>             {/*Folder pages */}
 				<FolderPage>
-					<Papers currentPage={currentPage} numOfPaperPages={numOfPaperPages} closePages={closePages}/>
+					<Papers currentPage={currentPage}/>
 				</FolderPage>
 			</div>
 
-			<PageButtons  buttonStyle={buttonStyle.right} movePage={handleNext}/>    {/*Button for page flipping */}
+			<PageButtons  buttonStyle={buttonStyles.right} movePage={handleNext}/>    {/*Button for page flipping */}
 
 		</div>
 	);
