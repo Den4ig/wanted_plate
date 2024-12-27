@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import { FolderContext } from "../../App";
-//Components
+import { useFolder } from "../../components/Contexts/FolderContext";
 import Page from '../Page/Page'
 import styles from "./Papers.module.css";
 
 export default function Papers({ currentPage=null }){
 
-    const { numOfPaperPages } = useContext(FolderContext);
+    const { numOfPaperPages } = useFolder();
 
     return(
         <div className={styles.book}>

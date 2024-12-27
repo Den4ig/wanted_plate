@@ -14,6 +14,7 @@
 	height: 50px;
 	width: 200px;
 }
+
 .folder_buttons button:active {
 	background-color: rgb(161, 160, 160);
 }

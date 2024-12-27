@@ -11,6 +11,7 @@
 	border: none;
 	transition: 0.5s;
 }
+
 .page_button:hover {
 	cursor: pointer;
 	background-size: 110%;

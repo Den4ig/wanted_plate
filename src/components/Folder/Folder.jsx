@@ -1,15 +1,13 @@
-import { useState, useContext } from "react";
-import { FolderContext } from "../../App";
-//Components
+import { useState } from "react";
+import { useFolder } from "../../components/Contexts/FolderContext";
 import FolderPage from "../FolderPage/FolderPage";
 import Papers from "../Papers/Papers";
 import PageButtons from "../PageButtons/PageButtons";
-// Styles
 import styles from "./Folder.module.css";
 
 export default function Folder({ folderMove=null }) {
 
-	const { buttonStyles, numOfPaperPages, flipped, folderZIndex, folderTransition } = useContext(FolderContext);
+	const { buttonStyles, numOfPaperPages, flipped, folderStyle } = useFolder();
 
 	const [currentPage, setCurrentPage] = useState(0);
 
@@ -27,7 +25,7 @@ export default function Folder({ folderMove=null }) {
 			 <PageButtons buttonStyle={buttonStyles.left} movePage={handlePrev}/>    {/*Button for page flipping */}
 
 			<div className={folderMove}>
-				<FolderPage flipped={flipped} zIndex={folderZIndex} folderTransition={folderTransition}/>             {/*Folder pages */}
+				<FolderPage flipped={flipped} zIndex={folderStyle.zIndex} folderTransition={folderStyle.transition}/>             {/*Folder pages */}
 				<FolderPage>
 					<Papers currentPage={currentPage}/>
 				</FolderPage>

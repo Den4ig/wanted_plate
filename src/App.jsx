@@ -1,10 +1,10 @@
-import { useState, createContext } from "react";
+import { useState } from "react";
+import { FolderContext } from "./components/Contexts/FolderContext";
 import Folder from "./components/Folder/Folder";
 import FolderButtons from "./components/FolderButtons/FolderButtons";
 import folderStyles from "./components/Folder/Folder.module.css";
 import folderPageStyles from "./components/FolderPage/FolderPage.module.css";
 
-export const FolderContext = createContext();
 
 export default function App() {
 
@@ -15,9 +15,15 @@ export default function App() {
 	const [buttonStyles, setButtonStyles] = useState({   // Moving page buttons when opening folder
 		left: {},
 		right: {}
-	});  
-	const [folderZIndex, setFolderZIndex] = useState("2");  //Set folder's flipped page z-index when flipped
-	const [folderTransition, setFolderTransition] = useState("0.7s");  //Set folder's flipped page transition time when flipped or unflipped
+	});
+	
+	// const [folderZIndex, setFolderZIndex] = useState("2");  //Set folder's flipped page z-index when flipped
+	// const [folderTransition, setFolderTransition] = useState("0.7s");  //Set folder's flipped page transition time when flipped or unflipped
+
+	const [folderStyle, setFolderStyle] = useState({
+		zIndex: "2",
+		// transition: "0.7s",
+	});
 
 	const [isOpened, setIsOpened] = useState(true);  // Change button name
 	const [isStyled, setIsStyled] = useState(false);  // Page buttons styles for moving them and opacity change
@@ -41,20 +47,25 @@ export default function App() {
 				right: { transform: "translateX(336px) rotate(270deg)", opacity: "100" }
 			}
 		);
-		setFolderZIndex((prev) => (prev === "2" ? "0" : "2"));   //Set folder's flipped page z-index when flipped
-		setFolderTransition((prev) => {			//Set folder's flipped page transition time when flipped or unflipped
-			if(isOpened) {
-				return prev = "0.7s";
-			} else {
-				return prev = "0s";
-			}
+		// setFolderZIndex((prev) => (prev === "2" ? "0" : "2"));   //Set folder's flipped page z-index when flipped
+		// setFolderTransition((prev) => {			//Set folder's flipped page transition time when flipped or unflipped
+		// 	if(isOpened) {
+		// 		return prev = "0.7s";
+		// 	} else {
+		// 		return prev = "0s";
+		// 	}
+		// });
+		setFolderStyle((prev) => {
+			const zIndex = prev.zIndex === "2" ? "0" : "2";
+			const transition = prev.transition = isOpened ? "0s" : "0.7s";
+			return { zIndex, transition };
 		});
 		setIsFolderOpened(!isFolderOpened);		// Closing all pages if we close folder
 	};
 	
 	return (
 		<div>
-			<FolderContext.Provider value={{ buttonStyles, isFolderOpened, numOfPaperPages, flipped, folderZIndex, folderTransition }}>
+			<FolderContext.Provider value={{ buttonStyles, isFolderOpened, numOfPaperPages, flipped, folderStyle }}>
 				<Folder
 					folderMove={folderFlipped}
 				/>

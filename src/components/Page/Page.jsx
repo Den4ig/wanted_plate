@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { FolderContext } from "../../App";
-// Styles
+import { useFolder } from "../../components/Contexts/FolderContext";
 import styles from "./Page.module.css";
 
 export default function Page({ isFlipped=null, style=null }){
 
-    const { isFolderOpened } = useContext(FolderContext);
+    const { isFolderOpened } = useFolder();
 
     const flippedOrNot = () => {            // Closing all pages if we close folder
         if(isFolderOpened) {
